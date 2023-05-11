@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css"> 
+
+</head>
+<body class="main-container">
+    <div class="keys">
+        <div data-key="74" class="key">
+        <kbd>J</kbd>
+        <span class="sound">Clap</span>
+    </div>
+    <div class="keys">
+        <div data-key="79" class="key">
+        <kbd>O</kbd>
+        <span class="sound">HiHat</span>
+    </div>
+    <div class="keys">
+        <div data-key="78" class="key">
+        <kbd>N</kbd>
+        <span class="sound">Kick</span>
+    </div>
+    <div class="keys">
+        <div data-key="65" class="key">
+        <kbd>A</kbd>
+        <span class="sound">OpenHat</span>
+    </div>
+    <div class="keys">
+        <div data-key="84" class="key">
+        <kbd>T</kbd>
+        <span class="sound">Boom</span>
+    </div>
+    <div class="keys">
+        <div data-key="72" class="key">
+        <kbd>H</kbd>
+        <span class="sound">Snare</span>
+    </div>
+    <div class="keys">
+        <div data-key="65" class="key">
+        <kbd>A</kbd>
+        <span class="sound">Clap</span>
+    </div>
+    <div class="keys">
+        <div data-key="78" class="key">
+        <kbd>N</kbd>
+        <span class="sound">Tom</span>
+    </div>
+    <audio data-key="74" src="short-percussive-clap-one-shot.wav"></audio>
+    <audio data-key="79" src="clap-2-95736.mp3"></audio>
+    <audio data-key="78" src="punchy-kick.wav"></audio>
+    <audio data-key="65" src="open-bright-hi-hat-3.wav"></audio>
+    <audio data-key="84" src="strong-hit-36455.mp3"></audio>
+    <audio data-key="72" src="075961_skrillex-snare-90185.mp3"></audio>
+    <audio data-key="65" src="open-bright-hi-hat-3.wav"></audio>
+    <audio data-key="78" src="punchy-kick.wav"></audio>
+
+
+
+    <script>
+        window.addEventListener('keydown', function(e){
+            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            const key = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            if (!audio) return; 
+            audio.currentTime = 0; 
+            audio.play(); 
+            key.classList.add('playing'); 
+        }); 
+
+        function removeTransition(e) { 
+            console.log(e)
+           if(e.propertyName !== 'transform') return; 
+           console.log(e.propertyName)
+        }
+
+        function showMessage() {
+            alert("Welcome to my drum kit! Key in the letters of my name to hear the sound of my Drum!")
+        }
+        
+        showMessage(); 
+                
+
+
+
+
+        const keys = document.querySelectorAll('.key'); 
+        keys.forEach(key => addEventListener('transitionend', removeTransition)); 
+
+
+    </script>
+</body>
+</html>
